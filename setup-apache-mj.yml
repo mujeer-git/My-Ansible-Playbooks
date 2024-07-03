@@ -1,0 +1,8 @@
+---
+
+- name: this playbook is to install httpd, apache2 and start its related services along with copying index.html to nodes
+  hosts: all
+  become: true
+  roles:
+    - setup-apache-role
+      

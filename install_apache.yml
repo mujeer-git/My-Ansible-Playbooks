@@ -1,0 +1,28 @@
+---
+- name: this playbook is to install httpd & apache2 pacakages and start its services
+  hosts: all
+  become: true
+  tasks:
+  - name: to install httpd
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+
+  - name: to start httpd service
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family == "RedHat"
+
+  - name: to install apache2
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == "Debian"
+
+  - name: to start apache2
+    service:
+      name: apache2
+      state: started
+    when: ansible_os_family == "Debian"

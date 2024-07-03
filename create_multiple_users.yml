@@ -1,0 +1,11 @@
+---
+- name: this playbook create multiple users using old format as new format is not yet working
+  hosts: all
+  become: true
+  tasks:
+  - name: add a list of users
+    user: name='{{ item }}' state=present
+    with_items:
+      - Raj
+      - Sai
+      - Hari
